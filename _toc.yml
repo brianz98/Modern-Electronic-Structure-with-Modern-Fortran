@@ -5,3 +5,4 @@ format: jb-book
 root: src/index
 chapters:
 - file: src/Introduction/intro
+- file: src/Project01/Project01

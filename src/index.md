@@ -22,6 +22,7 @@ Contrary to popular belief, Fortran is very much alive and well-loved all around
  
  1. A Linux distribution
  2. A working Fortran compiler (see Fortran resources above), gfortran comes with most Linux distros.
+ 3. A text editor. If you don't already have a favourite editor, I recommend [Sublime Text](https://www.sublimetext.com/), which has a bunch of cool features like multi-cursor editing, and with the [Fortran package](https://packagecontrol.io/packages/Fortran) also supports Fortran syntax highlighting, with docstring support for intrinsics.
 
 ```{admonition} What if I use Windows?
 If you're on Windows 10 or 11, you can download the Windows Subsystem for Linux 2 (WSL2), which is a Windows-native virtual machine for a stripped-down version of Ubuntu (as of Windows 11, the performance rivals actual native Ubuntu, and even comes with native GUI support, so it's almost as good as the real thing). Instructions on how to do so can be found on [official Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install). It is also highly recommended that you download the official [Windows Terminal](https://www.microsoft.com/en-gb/p/windows-terminal/9n0dx20hk701#activetab=pivot:overviewtab) app, which makes the command-line interface experience so much better.
