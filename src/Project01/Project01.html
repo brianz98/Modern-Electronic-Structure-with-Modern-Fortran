@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 01: Integrals and geometry read-in &#8212; Modern Quantum Chemistry with Modern Fortran</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="A gentle introduction to Fortran" href="../Introduction/intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Modern Quantum Chemistry with Modern Fortran</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Modern Quantum Chemistry with Modern Fortran
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Introduction/intro.html">
+   A gentle introduction to Fortran
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Project 01: Integrals and geometry read-in
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/src/Project01/Project01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/brianz98/Electronic-Structure-with-Fortran"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/brianz98/Electronic-Structure-with-Fortran/issues/new?title=Issue%20on%20page%20%2Fsrc/Project01/Project01.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-reading-integral-files">
+   Step 1: Reading integral files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-electron-integrals">
+     One-electron integrals
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Project 01: Integrals and geometry read-in</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-reading-integral-files">
+   Step 1: Reading integral files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-electron-integrals">
+     One-electron integrals
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="project-01-integrals-and-geometry-read-in">
+<h1>Project 01: Integrals and geometry read-in<a class="headerlink" href="#project-01-integrals-and-geometry-read-in" title="Permalink to this headline">¶</a></h1>
+<p>This project will introduce you to the basics of Fortran input/output, and manipulation of arrays. The aim is to read files containing the Gaussian integrals, precomputed from <a class="reference external" href="https://psicode.org/psi4manual/master/index.html">Psi4</a>, and a file specifying the geometry of the system.</p>
+<div class="section" id="step-1-reading-integral-files">
+<h2>Step 1: Reading integral files<a class="headerlink" href="#step-1-reading-integral-files" title="Permalink to this headline">¶</a></h2>
+<p>These files are present in each integral/geometry file directory</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File name</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s.dat</span></code></p></td>
+<td><p>The AO overlap integrals, <span class="math notranslate nohighlight">\(S_{\mu\nu}=\langle \psi_{\mu}\vert\psi_{\nu}\rangle\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">t.dat</span></code></p></td>
+<td><p>The AO kinetic integrals, <span class="math notranslate nohighlight">\(T_{\mu\nu}=\langle \psi_{\mu}\vert -\frac{1}{2}\nabla^2\vert\psi_{\nu}\rangle\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">v.dat</span></code></p></td>
+<td><p>The AO potential integrals, <span class="math notranslate nohighlight">\(V_{\mu\nu}=\langle \psi_{\mu}\vert V_\mathrm{ext}\vert\psi_{\nu}\rangle\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eri.dat</span></code></p></td>
+<td><p>The AO electron repulsion integrals, <span class="math notranslate nohighlight">\((\mu\nu\vert\sigma\tau)=\langle\mu\tau\vert\sigma\nu\rangle=\int\int\psi^*_{\mu}(1)\psi_{\nu}(1)\frac{1}{r_{12}}\psi^*_{\sigma}(2)\psi_{\tau}(2)dr_1dr_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom.dat</span></code></p></td>
+<td><p>The complete specification of the molecule in a Cartesian matrix</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="one-electron-integrals">
+<h3>One-electron integrals<a class="headerlink" href="#one-electron-integrals" title="Permalink to this headline">¶</a></h3>
+<p>The one electron files are specified as follows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1 1  1.000000000000000
+2 1  0.236703936510848
+2 2  1.000000000000000
+3 1 -0.000000000000000
+3 2  0.000000000000000
+</pre></div>
+</div>
+<p>Where the first two integers are the bra and ket basis function indices respectively. Create a derived type that holds the one-electron integral arrays, and read them in.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint 1: Creating the derived type</p>
+<p>Derived types in Fortran are like structs in C and classes (without class-bound functions) in Python. The layout of a derived type declaration is as follows</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">integrals</span><span class="w"></span>
+<span class="w">   </span><span class="k">implicit none</span><span class="w"></span>
+<span class="w">   </span><span class="c">! Conventionally derived type names are suffixed with `_t`</span>
+<span class="w">   </span><span class="k">type </span><span class="n">int_store_t</span><span class="w"></span>
+<span class="w">      </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ovlp</span><span class="p">,</span><span class="w"> </span><span class="n">ke</span><span class="p">,</span><span class="w"> </span><span class="n">ele_nuc</span><span class="w"></span>
+<span class="w">   </span><span class="k">end type </span><span class="n">int_store_t</span><span class="w"></span>
+<span class="k">end module </span><span class="n">integrals</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint 2: What size arrays should we allocate?</p>
+<p>At this point, we don’t know the number of basis functions, so we can’t allocate the integral arrays just yet! We can get the number of basis functions most easily from <code class="docutils literal notranslate"><span class="pre">s.dat</span></code> by just getting the largest index. To do that you need to open up the file and read through it once first without storing anything into the <code class="docutils literal notranslate"><span class="pre">ovlp</span></code> array.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">read_integrals_in</span><span class="p">(</span><span class="n">int_store</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="c">! This is an intrinsic I/O parameter (constant), which we can compare our I/O status variable to, to see if we&#39;ve reached the end of the file.</span>
+<span class="w">   </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">iostat_end</span><span class="w"></span>
+<span class="w">   </span>
+<span class="w">   </span><span class="c">! Remember we just defiined the derived type above, which should be in the same `integrals` module, so we don&#39;t have to say `use int_store_t`.</span>
+<span class="w">   </span><span class="k">type</span><span class="p">(</span><span class="n">int_store_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">int_store</span><span class="w"></span>
+
+<span class="w">   </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ir</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="p">,</span><span class="w"> </span><span class="n">nbasis</span><span class="p">,</span><span class="w"> </span><span class="n">ibasis</span><span class="p">,</span><span class="w"> </span><span class="n">jbasis</span><span class="w"></span>
+<span class="w">   </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">intgrl</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">nbasis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">   </span><span class="c">! &#39;newunit=ir&#39; gurantees the file is opened in a new file stream, &#39;old&#39; means we&#39;re reading an existing file, and &#39;formatted&#39; means plain text.</span>
+<span class="w">   </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">ir</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;dat/s.dat&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;formmated&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="c">! Pass through the file once to find nbasis first</span>
+<span class="w">   </span><span class="k">do</span><span class="w"></span>
+<span class="w">      </span><span class="c">! We read from the &#39;ir&#39; file stream, which has our file open, &#39;*&#39; means default formatting options, &#39;iostat&#39; is the I/O status which we need to keep track to know when we reach the end.</span>
+<span class="w">      </span><span class="c">! We read two integers and a real from each line, into the variables.</span>
+<span class="w">      </span><span class="k">read</span><span class="p">(</span><span class="n">ir</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="w"> </span><span class="n">ibasis</span><span class="p">,</span><span class="w"> </span><span class="n">jbasis</span><span class="p">,</span><span class="w"> </span><span class="n">intgrl</span><span class="w"> </span>
+<span class="w">      </span><span class="c">! Break loop if EOF reached</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ios</span><span class="o">==</span><span class="n">iostat_end</span><span class="p">)</span><span class="w"> </span><span class="k">exit</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">ibasis</span><span class="o">&gt;</span><span class="n">nbasis</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">jbasis</span><span class="o">&gt;</span><span class="n">nbasis</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">nbasis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">ibasis</span><span class="p">,</span><span class="w"> </span><span class="n">jbasis</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">   end do</span><span class="w"></span>
+
+<span class="w">   </span><span class="c">! Close the file</span>
+<span class="w">   </span><span class="k">close</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./src/Project01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../Introduction/intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">A gentle introduction to Fortran</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Brian Zhao<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
